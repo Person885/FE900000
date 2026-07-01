@@ -15,7 +15,7 @@ let EternityMaxAll = {
     generalHighestSweep(() => EternityGenerators.highest(), types);
     generalMaxAll(types.filter(x => x > 8 && x <= 11).map(x => EternityUpgrade(x - 8)), EternityPoints);
     generalMaxAll(types.filter(x => x <= 9).map(x => EternityGenerator(x)), EternityPoints);
-    generalMaxAll(types.filter(x => x > 11 & x <= 13).map(x => EternityProducerUpgrade(x - 10)), EternityPoints);
+    generalMaxAll(types.filter(x => x > 11 & x <= 13).map(x => EternityProducerUpgrade(x - 11)), EternityPoints);
     for (let i of [0, 1, 2]) {
       if (types.includes(i + 14)) {
         Studies.buyMax(i);
