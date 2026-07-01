@@ -274,14 +274,14 @@ let Autobuyers = {
     return [13, 14, 15, 16, 17].some(x => this.isLockedResetAutobuyer(x));
   },
   sacrifice() {
-    if (!Autobuyer(11).isActive() || !Sacrifice.canSacrifice()) return;
-    if (Autobuyer(11).isHyperactive()) {
+    if (!Autobuyer(10).isActive() || !Sacrifice.canSacrifice()) return;
+    if (Autobuyer(10).isHyperactive()) {
       Sacrifice.sacrifice(false);
       return;
     }
     let shouldSacrifice;
-    let mode = Autobuyer(11).mode();
-    let priority = Autobuyer(11).priority();
+    let mode = Autobuyer(10).mode();
+    let priority = Autobuyer(10).priority();
     if (mode === 'Multiplier') {
       shouldSacrifice = Sacrifice.sacrificeMultiplierMultGain().gte(priority);
     } else if (mode === 'Time') {
@@ -295,14 +295,14 @@ let Autobuyers = {
     }
   },
   prestige() {
-    if (!Autobuyer(12).isActive() || !Prestige.canPrestige()) return;
-    if (Autobuyer(12).isHyperactive()) {
+    if (!Autobuyer(11).isActive() || !Prestige.canPrestige()) return;
+    if (Autobuyer(11).isHyperactive()) {
       Prestige.prestige(false);
       return;
     }
     let shouldPrestige;
-    let mode = Autobuyer(12).mode();
-    let priority = Autobuyer(12).priority();
+    let mode = Autobuyer(11).mode();
+    let priority = Autobuyer(11).priority();
     if (mode === 'Multiplier') {
       shouldPrestige = Prestige.prestigePowerMultGain().gte(priority);
     } else if (mode === 'Time') {
@@ -316,16 +316,16 @@ let Autobuyers = {
     }
   },
   infinity() {
-    if (Autobuyer(13).hasAutobuyer() && Autobuyers.automaticallyCompleteChallenges() &&
+    if (Autobuyer(12).hasAutobuyer() && Autobuyers.automaticallyCompleteChallenges() &&
     InfinityPrestigeLayer.canInfinity() &&
     (Challenge.isSomeChallengeRunning() || InfinityChallenge.isSomeInfinityChallengeRunning())) {
       InfinityPrestigeLayer.infinity(false, null);
       return;
     }
-    if (!Autobuyer(13).isActive() || !InfinityPrestigeLayer.canInfinity()) return;
+    if (!Autobuyer(12).isActive() || !InfinityPrestigeLayer.canInfinity()) return;
     let shouldInfinity;
-    let mode = Autobuyer(13).mode();
-    let priority = Autobuyer(13).priority();
+    let mode = Autobuyer(12).mode();
+    let priority = Autobuyer(12).priority();
     if (mode === 'Amount') {
       shouldInfinity = InfinityPrestigeLayer.infinityPointGain().gte(priority);
     } else if (mode === 'Time') {
