@@ -4,14 +4,14 @@ let Autobuyer = function (i) {
   }
   return {
     hasAutobuyer() {
-      if (i === 14) {
+      if (i === 13) {
         return EternityMilestones.isEternityMilestoneActive(16);
-      } else if (i === 15) {
+      } else if (i === 14) {
         return ComplexityAchievements.isComplexityAchievementActive(1, 1) ||
         ComplexityAchievements.isComplexityAchievementActive(2, 2);
-      } else if (i === 16) {
+      } else if (i === 15) {
         return ComplexityAchievements.isAchievementsUnlockedRewardActive(4);
-      } else if (i === 17) {
+      } else if (i === 16) {
         return FinalityMilestones.isFinalityMilestoneActive(14);
       } else if (i > 10) {
         return Challenge.isChallengeCompleted(i);
@@ -42,7 +42,7 @@ let Autobuyer = function (i) {
       return player.autobuyers[i - 1].isOn;
     },
     hasGeneration() {
-      if (i < 13) {
+      if (i < 12) {
         return false;
       }
       return [
@@ -140,7 +140,7 @@ let Autobuyer = function (i) {
 }
 
 let Autobuyers = {
-  list: [...Array(17)].map((_, i) => Autobuyer(i + 1)),
+  list: [...Array(16)].map((_, i) => Autobuyer(i + 1)),
   get: function (x) {
     return this.list[x - 1];
   },
@@ -221,7 +221,7 @@ let Autobuyers = {
   setAreNewlyUnlockedAutobuyersOn(x) {
     player.options.autobuyers.areNewlyUnlockedAutobuyersOn = x;
     // This actually changes which locked autobuyers are on, behind the scenes.
-    for (let i = 1; i <= 17; i++) {
+    for (let i = 1; i <= 16; i++) {
       let autobuyer = this.get(i);
       // Don't touch the complexity autobuyer.
       if (!autobuyer.hasAutobuyer() && !this.isLockedResetAutobuyer(i) && i !== 15) {
@@ -359,7 +359,7 @@ let Autobuyers = {
     }
   },
   eternity() {
-    if (Autobuyer(14).hasAutobuyer() && Autobuyers.automaticallyCompleteChallenges() &&
+    if (Autobuyer(13).hasAutobuyer() && Autobuyers.automaticallyCompleteChallenges() &&
     EternityPrestigeLayer.canEternity() &&
     EternityChallenge.isSomeEternityChallengeRunning() && !EternityChallenge.isCurrentEternityChallengeCompleted()) {
       let ec = EternityChallenge.currentEternityChallenge();
@@ -373,10 +373,10 @@ let Autobuyers = {
         return;
       }
     }
-    if (!Autobuyer(14).isActive() || !EternityPrestigeLayer.canEternity()) return;
+    if (!Autobuyer(13).isActive() || !EternityPrestigeLayer.canEternity()) return;
     let shouldEternity;
-    let mode = Autobuyer(14).mode();
-    let priority = Autobuyer(14).priority();
+    let mode = Autobuyer(13).mode();
+    let priority = Autobuyer(13).priority();
     if (mode === 'Amount') {
       shouldEternity = EternityPrestigeLayer.eternityPointGain().gte(priority);
     } else if (mode === 'Time') {
@@ -419,10 +419,10 @@ let Autobuyers = {
     }
   },
   gainPermanence() {
-    if (!Autobuyer(15).isActive() || !Permanence.canGainPermanence()) return;
+    if (!Autobuyer(14).isActive() || !Permanence.canGainPermanence()) return;
     let shouldGainPermanence;
-    let mode = Autobuyer(15).mode();
-    let priority = Autobuyer(15).priority();
+    let mode = Autobuyer(14).mode();
+    let priority = Autobuyer(14).priority();
     if (mode === 'Amount') {
       shouldGainPermanence = Permanence.permanenceGain().gte(priority);
     } else if (mode === 'Time') {
@@ -435,10 +435,10 @@ let Autobuyers = {
     }
   },
   complexity() {
-    if (!Autobuyer(16).isActive() || !ComplexityPrestigeLayer.canComplexity()) return;
+    if (!Autobuyer(15).isActive() || !ComplexityPrestigeLayer.canComplexity()) return;
     let shouldComplexity;
-    let mode = Autobuyer(16).mode();
-    let priority = Autobuyer(16).priority();
+    let mode = Autobuyer(15).mode();
+    let priority = Autobuyer(15).priority();
     if (mode === 'Amount') {
       shouldComplexity = ComplexityPrestigeLayer.complexityPointGain().gte(priority);
     } else if (mode === 'Time') {
@@ -477,7 +477,7 @@ let Autobuyers = {
     }
   },
   finality() {
-    if (!Autobuyer(17).isActive() || !FinalityPrestigeLayer.canFinality()) return;
+    if (!Autobuyer(16).isActive() || !FinalityPrestigeLayer.canFinality()) return;
     FinalityPrestigeLayer.finality(false);
   },
   slowAutobuyersTimerLength() {
