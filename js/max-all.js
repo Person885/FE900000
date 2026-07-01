@@ -4,7 +4,7 @@ let MaxAll = {
   },
   maxAll(types, singles) {
     if (types === undefined) {
-      types = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      types = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     }
     if (singles === undefined) {
       singles = [];
