@@ -54,13 +54,13 @@ let Autobuyer = function (i) {
       ][i - 13];
     },
     hasNoCost() {
-      if (!(11 <= i && i <= 12)) {
+      if (!(10 <= i && i <= 11)) {
         return false;
       }
       return [
         EternityMilestones.isEternityMilestoneActive(6),
         EternityMilestones.isEternityMilestoneActive(8)
-      ][i - 11];
+      ][i - 10];
     },
     isActive() {
       // change to
