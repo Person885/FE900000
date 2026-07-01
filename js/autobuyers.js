@@ -140,7 +140,7 @@ let Autobuyer = function (i) {
 }
 
 let Autobuyers = {
-  list: [...Array(16)].map((_, i) => Autobuyer(i + 1)),
+  list: [...Array(17)].map((_, i) => Autobuyer(i + 1)),
   get: function (x) {
     return this.list[x - 1];
   },
