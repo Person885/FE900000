@@ -10,8 +10,8 @@ let MaxAll = {
       singles = [];
     }
     let bought = generalHighestSweep(() => Generators.highest(), types);
-    if (types.includes(10)) {
-      if (singles.includes(10)) {
+    if (types.includes(9)) {
+      if (singles.includes(9)) {
         Boost.buy();
       } else {
         Boost.buyMax();
