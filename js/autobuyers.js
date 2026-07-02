@@ -51,7 +51,7 @@ let Autobuyer = function (i) {
         Permanence.hasPassiveProduction(),
         ComplexityPrestigeLayer.hasComplexityPointGeneration(),
         false
-      ][i - 13];
+      ][i - 12];
     },
     hasNoCost() {
       if (!(10 <= i && i <= 11)) {
