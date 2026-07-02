@@ -266,12 +266,12 @@ let Autobuyers = {
     }
   },
   isLockedResetAutobuyer(x) {
-    if (x < 13) return false;
-    let layer = ['infinity', 'eternity', 'complexity', 'complexity', 'finality'][x - 13];
+    if (x < 12) return false;
+    let layer = ['infinity', 'eternity', 'complexity', 'complexity', 'finality'][x - 12];
     return !Autobuyer(x).hasAutobuyer() && PrestigeLayerProgress.hasReached(layer);
   },
   anyLockedResetAutobuyers() {
-    return [13, 14, 15, 16, 17].some(x => this.isLockedResetAutobuyer(x));
+    return [12, 13, 14, 15, 16].some(x => this.isLockedResetAutobuyer(x));
   },
   sacrifice() {
     if (!Autobuyer(10).isActive() || !Sacrifice.canSacrifice()) return;
